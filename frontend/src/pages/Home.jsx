@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React from "react";
 
-const Home = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/api/lessons");
-        console.log("Response:", response.data);
-      } catch (error) {
-        console.error("Error:", error.message);
-      }
-    };
-    fetchData();
-  }, []);
-
-  return <h1>Hello {data}</h1>;
-};
-
-export default Home;
+export default function Home() {
+  return (
+    <div className="flex flex-col justify-center items-center h-screen bg-gray-100 text-center">
+      <h1 className="text-4xl font-bold text-gray-800 mb-4 ">
+        Welcome to Dura Lopa
+      </h1>
+      <p className="text-lg text-gray-699 mb-6">
+        Learn and preserve the Dura language with interactive lessons, quizes,
+        and resources.
+      </p>
+      <button className="px-6 py-3 bg-gray-500 text-white rounded-lg shadow-lg hover:bg-gray-600 transition">
+        Get Started
+      </button>
+    </div>
+  );
+}
