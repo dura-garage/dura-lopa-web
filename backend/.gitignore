@@ -1,0 +1,43 @@
+# Node.js
+node_modules/
+
+# npm logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor folders
+.vscode/
+.idea/
+
+# Build directories
+/dist
+/build
+
+# Test coverage directory
+/coverage
+
+# Dependency directories for front-end
+client/node_modules/
+
+# Docker-related
+docker-compose.override.yml
+docker-compose.yml
+Dockerfile
+*.swp
