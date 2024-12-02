@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000", 
+  baseURL: "http://localhost:5000",
 });
 
-
-export const fetchLessons = async () => {
+export const fetchDictionary = async () => {
   try {
-    const response = await API.get("/api/lessons");
+    const response = await API.get("/api/dictionary");
     return response.data;
   } catch (error) {
     console.error("Error fetching lessons:", error);
