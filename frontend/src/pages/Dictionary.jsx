@@ -1,35 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { fetchDictionary } from "../services/api";
+import { useTranslation } from "react-i18next";
 
 export default function Dictionary() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("Nepali");
-  const [wordList, setWordList] = useState([
-    // {
-    //   word: "टो",
-    //   ipa: "/teu/",
-    //   nepali: "हिजो",
-    //   english: "yesterday",
-    //   pos: "adv",
-    // },
-    // { word: "सार", ipa: "/saar/", nepali: "सार", english: "summary", pos: "n" },
-    // {
-    //   word: "पानी",
-    //   ipa: "/pɑːni/",
-    //   nepali: "पानी",
-    //   english: "water",
-    //   pos: "n",
-    // },
-  ]);
-  const [filteredWords, setFilteredWords] = useState(wordList);
-
+  const [selectedWord, setSelectedWord] = useState(null);
+  const [wordList, setWordList] = useState([]);
+  const [filteredWords, setFilteredWords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { t } = useTranslation();
 
   const handleSearch = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
+    setSelectedWord(null);
 
     const filterWords = wordList.filter((entry) => {
       return (
@@ -42,18 +28,13 @@ export default function Dictionary() {
     setFilteredWords(filterWords);
   };
 
-  const handleLanguageChange = (e) => {
-    e.target.value
-      ? setSelectedLanguage(e.target.value)
-      : setSelectedLanguage("");
-  };
-
-  // lets fetch the dictionary on entry to the page
+  // Fetch the dictionary data
   useEffect(() => {
     const getDictionaryData = async () => {
       try {
         const data = await fetchDictionary();
         setWordList(data);
+        setFilteredWords(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -64,68 +45,90 @@ export default function Dictionary() {
     getDictionaryData();
   }, []);
 
-  // TODO:
-  // Work on this later
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-lg">Loading...</div>;
   }
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div className="text-center text-red-500">Error: {error}</div>;
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <div className="w-full sm:max-w-sm md:max-w-sm lg:max-w-screen-lg text-center">
-        <h1 className="text-6xl font-bold m-30">Dictionary</h1>
-        <div className="my-20"></div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+      <div className="w-full max-w-screen-lg ">
+        <h1 className="text-2xl lg:text-4xl font-bold text-c1 text-center my-5">
+          {t("dictionaryTitle")}
+        </h1>
+
+        {/* Search Input */}
         <div className="flex items-center gap-4 mb-6">
           <input
             type="text"
-            placeholder="Search Term"
+            placeholder={t("searchTerm")}
             value={searchTerm}
             onChange={handleSearch}
-            className="flex-grow p-5 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-grow mx-4 p-4 border border-c1 rounded-full focus:outline-none focus:ring-2 focus:ring-c1"
           />
-          <select
-            value={selectedLanguage}
-            onChange={handleLanguageChange}
-            className="p-5 border border-gray-300 rounded-2xl text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 bg-white shadow-sm appearance-none"
-          >
-            <option value="">Choose Language</option>
-            <option value="Nepali">नेपाली</option>
-            <option value="English">English</option>
-            <option value="Dura">दुरा</option>
-          </select>
         </div>
-        {/* showing the list of the search results */}
-        <ul className="mt-4 list-none p-0 text-left h-[calc(100vh-400px)] overflow-y-auto">
-          {filteredWords.map((entry, index) => (
-            <li
-              key={index}
-              className="py-2 border-b border-gray-300 odd:bg-gray-100 even:bg-white"
-            >
-              <div className="ml-5">
-                <Link to={`/dictionary/word`} state={{ wordDetails: entry }}>
-                  <strong className="font-semibold">{entry.dura}</strong>
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    ({entry.ipa})
-                  </span>{" "}
-                  - {entry.nepali}
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    ({entry.nepaliPos})
-                  </span>
-                  , {entry.english}
-                  <span className="text-sm text-gray-500">
-                    {" "}
-                    ({entry.englishPos})
-                  </span>
-                </Link>
+
+        {/* Main Layout */}
+        <div className="flex flex-col-reverse lg:flex-row lg:gap-5 lg:h-[calc(100vh-250px)] mx-4 ">
+          {/* Word List */}
+          <ul className="flex-1 mt-4 overflow-y-auto lg:h-auto lg:max-h-screen p-2">
+            {filteredWords.map((entry, index) => (
+              <li
+                key={index}
+                className="p-4 border-b border-c4 odd:bg-c6-50 even:bg-c6-100 hover:bg-gray-50 transition duration-200 cursor-pointer"
+                onClick={() => setSelectedWord(entry)}
+              >
+                <div className="flex flex-col">
+                  <strong className="text-lg text-blue-600">
+                    {entry.dura}
+                  </strong>
+                  <span className="text-sm text-gray-500">({entry.ipa})</span>
+                  <p className="text-gray-700 mt-1">
+                    {entry.nepali}{" "}
+                    <span className="text-sm">({entry.nepaliPos})</span>
+                  </p>
+                  <p className="text-gray-700">
+                    {entry.english}{" "}
+                    <span className="text-sm">({entry.englishPos})</span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* Word Details */}
+          {selectedWord && (
+            <div className="bg-c1 shadow-lg rounded-3xl p-6 w-full lg:w-2/5 overflow-y-auto  my-2">
+              <h1 className="text-2xl  lg:text-4xl font-bold text-c6-100 mt-4 mb-6 text-center">
+                {selectedWord.dura}
+              </h1>
+              <div className="text-sm lg:font-semibold text-c6-50 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>IPA</div>
+                  <div className="italic font-normal">/{selectedWord.ipa}/</div>
+
+                  <div>नेपाली</div>
+                  <div>{selectedWord.nepali}</div>
+
+                  <div>शब्द प्रकार</div>
+                  <div className="italic font-normal">
+                    {selectedWord.nepaliPos}
+                  </div>
+
+                  <div>English</div>
+                  <div>{selectedWord.english}</div>
+
+                  <div>Parts of Speech</div>
+                  <div className="italic font-normal">
+                    {selectedWord.englishPos}
+                  </div>
+                </div>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

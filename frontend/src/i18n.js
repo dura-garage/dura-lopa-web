@@ -7,6 +7,8 @@ const resources = {
       welcome: "Welcome to Dura Lopa",
       description: "Learn and preserve the Dura language.",
       getStarted: "Get Started",
+      dictionaryTitle: "Dura Language Dictionary",
+      searchTerm: "Search Term",
     },
   },
   ne: {
@@ -14,13 +16,15 @@ const resources = {
       welcome: "दुरा लोपामा स्वागत छ।",
       description: "दुरा भाषा सिकौँ र संरक्षण गरौँ।",
       getStarted: "सुरु गर्नुहोस्",
+      dictionaryTitle: "दुरा भाषाको शब्दकोश",
+      searchTerm: "शब्द खोज्नुहोस्",
     },
   },
 };
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en", // select default language
+  lng: "ne", // select default language
   fallbackLng: "en",
 });
 
