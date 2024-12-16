@@ -41,3 +41,15 @@ app.get("/api/dictionary", async (req, res) => {
     res.status(500).json({ error: "Failed to load dictionary data" });
   }
 });
+
+// Sentences Routes
+app.get("/api/sentences/all", async (req, res) => {
+  try {
+    // fetch data from source
+    const data = await fs.readFile("./assets/sentences.json");
+    const sentences = JSON.parse(data);
+    res.status(200).json(sentences);
+  } catch (error) {
+    res.status(500).send("Error in server");
+  }
+});

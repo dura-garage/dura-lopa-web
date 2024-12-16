@@ -11,14 +11,36 @@ export default function Home() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-c6 text-center">
-      <h1 className=" text-4xl lg:text-8xl font-bold text-c1 mb-4 ">{t("welcome")}</h1>
+      <h1 className=" text-4xl lg:text-7xl font-bold text-c1 mb-4 ">
+        {t("welcome")}
+      </h1>
       <p className="text-1xl lg:text-4xl text-c1 mb-6">{t("description")}</p>
-      <Link
-        to="/dictionary"
-        className="px-4 py-2 lg:px-8  lg:py-4  bg-c5 text-c1 text-1xl lg:text-2xl rounded-lg shadow-lg hover:text-white hover:bg-c1 transition"
-      >
-        {t("getStarted")}
-      </Link>
+
+      <div className="flex flex-col lg:flex-row justify-center gap-6 my-10">
+        <Link
+          to="/dictionary"
+          className="flex flex-col items-center justify-center w-full max-w-sm p-6 bg-c5 text-c1 rounded-lg shadow-lg hover:shadow-xl transition-shadow hover:bg-c1 hover:text-white transform hover:scale-105"
+        >
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-2">
+            {t("getStarted")}
+          </h2>
+          <p className="text-sm lg:text-base text-c3">
+            {t("getStartedDescription")} {/* Optional subtitle */}
+          </p>
+        </Link>
+
+        <Link
+          to="/sentences"
+          className="flex flex-col items-center justify-center w-full max-w-sm p-6 bg-c5 text-c1 rounded-lg shadow-lg hover:shadow-xl transition-shadow hover:bg-c1 hover:text-white transform hover:scale-105"
+        >
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-2">
+            {t("seeSentences")}
+          </h2>
+          <p className="text-sm lg:text-base text-c3">
+            {t("seeSentencesDescription")} {/* Optional subtitle */}
+          </p>
+        </Link>
+      </div>
     </div>
   );
 }
