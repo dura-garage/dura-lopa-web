@@ -4,6 +4,9 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
+      appName: "Dura Lopa",
+      dictionary: "Dictionary",
+      sentences: "Sentences",
       welcome: "Welcome to Dura Lopa Website",
       description: "Learn and preserve the Dura language.",
       getStarted: "Get Started",
@@ -19,6 +22,9 @@ const resources = {
   },
   ne: {
     translation: {
+      appName: "दुरा लोपा",
+      dictionary: "शब्दकोष",
+      sentences: "वाक्यहरु",
       welcome: "दुरा लोपा वेबसाइटमा स्वागत छ।",
       description: "दुरा भाषा सिकौँ र संरक्षण गरौँ।",
       getStarted: "सुरु गर्नुहोस्",
