@@ -48,10 +48,19 @@ export default function Dictionary() {
   }, []);
 
   if (loading) {
-    return <div className="text-center text-lg">Loading...</div>;
+    return (
+      <div className="text-center mt-10 text-blue-500">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 mx-auto"></div>
+        <p>Loading...</p>
+      </div>
+    );
   }
   if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
+    return (
+      <div className="text-center mt-10 text-red-500">
+        <p>{error}</p>
+      </div>
+    );
   }
 
   return (
