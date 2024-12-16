@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className=" text-c1 p-4 mt-10">
+    <footer className=" text-c1 p-2">
       <div className="text-center">
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Dura Garage. All rights reserved.
