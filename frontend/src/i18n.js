@@ -18,6 +18,7 @@ const resources = {
       seeSentencesDescription: "The Dura-Nepali bilingual sentences.",
       sentencesTitle: "Nepali-Dura Bilingual Sentences",
       totalSentences: "Total Sentences Count",
+      searchSentencePlaceholder: "Search for sentences ...",
     },
   },
   ne: {
@@ -35,6 +36,7 @@ const resources = {
       seeSentencesDescription: "दुरा-नेपाली द्विभाषिक वाक्यहरु हेर्नुहोस्।",
       sentencesTitle: "नेपाली-दुरा द्विभाषिक वाक्यहरु",
       totalSentences: "जम्मा वाक्य सङ्ख्या",
+      searchSentencePlaceholder: "वाक्यहरु खोज्नुहोस् ... ",
     },
   },
 };
