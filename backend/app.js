@@ -19,7 +19,7 @@ const logStream = fs.createWriteStream(path.join(__dirname, "logs/app.log"), {
 app.use(morgan("combined", { stream: logStream }));
 
 // Static Files
-app.use("/assets", express.static(path.join(__dirname, "assets")));
+// app.use("/assets", express.static(path.join(__dirname, "assets")));
 
 // Modular Routes
 const dictionaryRoutes = require("./routes/dictionary");
