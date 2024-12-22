@@ -14,9 +14,9 @@ yarn-error.log
 .env.production
 
 # Logs
-logs
-*.log
-*.log.*
+# logs
+# *.log
+# *.log.*
 
 # Operating System files
 .DS_Store
