@@ -1,55 +1,50 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require("morgan");
+const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
+
 const app = express();
-const fs = require("fs").promises;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
+// Logging
+const logStream = fs.createWriteStream(path.join(__dirname, "logs/app.log"), {
+  flags: "a",
+});
+app.use(morgan("combined", { stream: logStream }));
+
+// Static Files
+app.use("/assets", express.static(path.join(__dirname, "assets")));
+
+// Modular Routes
+const dictionaryRoutes = require("./routes/dictionary");
+const sentencesRoutes = require("./routes/sentences");
+
+app.use("/api/dictionary", dictionaryRoutes);
+app.use("/api/sentences", sentencesRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Backend is running.");
+});
+
 // MongoDB Connection
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     console.log("MongoDB connected.");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+// if (process.env.MONGO_URI) {
+//   mongoose
+//     .connect(process.env.MONGO_URI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     })
+//     .then(() => console.log("MongoDB connected."))
+//     .catch((err) => console.error("MongoDB connection error:", err));
+// } else {
+//   console.warn(
+//     "Warning: MONGO_URI is not defined. MongoDB connection skipped."
+//   );
+// }
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-// Routes
-app.get("/", async (req, res) => res.send("Backend is running!"));
-
-// Dictionary Routes
-app.get("/api/dictionary", async (req, res) => {
-  try {
-    // read data form json file
-    const data = await fs.readFile("./assets/dictionary.json");
-
-    // parse the json data
-    const dictionaryData = JSON.parse(data);
-
-    res.status(200).json(dictionaryData);
-  } catch (error) {
-    console.error("Error reading dictionary.json", error.message);
-    res.status(500).json({ error: "Failed to load dictionary data" });
-  }
-});
-
-// Sentences Routes
-app.get("/api/sentences/all", async (req, res) => {
-  try {
-    // fetch data from source
-    const data = await fs.readFile("./assets/sentences.json");
-    const sentences = JSON.parse(data);
-    res.status(200).json(sentences);
-  } catch (error) {
-    res.status(500).send("Error in server");
-  }
-});
+module.exports = app;
