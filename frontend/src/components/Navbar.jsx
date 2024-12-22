@@ -23,6 +23,9 @@ export default function Navbar() {
           <Link to="/sentences" className="text-lg hover:text-c3">
             {t("sentences")}
           </Link>
+          <Link to="/timelines" className="text-lg hover:text-c3">
+            {t("seeAllTimelines")}
+          </Link>
           <button
             onClick={toggleLanguage}
             className="text-lg hover:text-c3 px-2 py-1 border border-c3 rounded"

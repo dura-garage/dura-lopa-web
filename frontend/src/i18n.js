@@ -19,6 +19,8 @@ const resources = {
       sentencesTitle: "Nepali-Dura Bilingual Sentences",
       totalSentences: "Total Sentences Count",
       searchSentencesPlaceholder: "Search for sentences ...",
+      seeAllTimelines: "Timelines",
+      seeAllTimelinesDescription: "Timelines of works on Dura Langauge",
     },
   },
   ne: {
@@ -37,6 +39,8 @@ const resources = {
       sentencesTitle: "नेपाली-दुरा द्विभाषिक वाक्यहरु",
       totalSentences: "जम्मा वाक्य सङ्ख्या",
       searchSentencesPlaceholder: "वाक्यहरु खोज्नुहोस् ... ",
+      seeAllTimelines: "समयरेखाहरु",
+      seeAllTimelinesDescription: "दुरा भाषा संरक्षणमा भएका कामहरुको समयरेखा",
     },
   },
 };

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://dura-lopa-web-backend.onrender.com",
+  // baseURL: "https://dura-lopa-web-backend.onrender.com",
+  baseURL:"http://localhost:5000"
 });
 
 export const fetchDictionary = async () => {

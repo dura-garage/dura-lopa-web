@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs").promises;
 const router = express.Router();
 
-let dictionaryCache = null;
+let sentenceCache = null;
 
 // Utility to read JSON files
 const preloadJsonFile = async (filePath) => {
@@ -15,22 +15,22 @@ const preloadJsonFile = async (filePath) => {
 };
 
 // Preloading sentences on server startup
-async () => {
+(async () => {
   try {
-    dictionaryCache = await preloadJsonFile("./assets/sentences.json");
+    sentenceCache = await preloadJsonFile("./assets/sentences.json");
     console.log("Sentence data preloaded into memory.");
   } catch (error) {
     console.error("Failed to preload sentence data:", error.message);
   }
-};
+})();
 
 // Routes
 router.get("/all", async (req, res) => {
   try {
-    if (!dictionaryCache) {
+    if (!sentenceCache) {
       throw new Error("Sentence data is not loaded.");
     }
-    res.status(200).json(sentences);
+    res.status(200).json(sentenceCache);
   } catch (error) {
     console.error("Error fetching sentences data:", error.message);
     res.status(500).json({ error: "Failed to load sentences data" });

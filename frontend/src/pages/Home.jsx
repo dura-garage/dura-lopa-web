@@ -46,6 +46,18 @@ export default function Home() {
               {t("seeSentencesDescription")}
             </p>
           </Link>
+
+          <Link
+            to="/timelines"
+            className="flex flex-col items-center justify-center w-full max-w-sm p-6 bg-c5 text-c1 rounded-lg shadow-lg hover:shadow-xl transition-shadow hover:bg-c1 hover:text-white transform hover:scale-105"
+          >
+            <h2 className="text-2xl lg:text-3xl font-semibold mb-2">
+              {t("seeAllTimelines")}
+            </h2>
+            <p className="text-sm lg:text-base text-c3">
+              {t("seeAllTimelinesDescription")}
+            </p>
+          </Link>
         </div>
       </main>
 
