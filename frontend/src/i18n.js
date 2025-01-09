@@ -21,6 +21,7 @@ const resources = {
       searchSentencesPlaceholder: "Search for sentences ...",
       seeAllTimelines: "Timelines",
       seeAllTimelinesDescription: "Timelines of works on Dura Langauge",
+      sources: "Sources",
     },
   },
   ne: {
@@ -41,6 +42,7 @@ const resources = {
       searchSentencesPlaceholder: "वाक्यहरु खोज्नुहोस् ... ",
       seeAllTimelines: "समयरेखाहरु",
       seeAllTimelinesDescription: "दुरा भाषा संरक्षणमा भएका कामहरुको समयरेखा",
+      sources: "स्रोतहरु",
     },
   },
 };

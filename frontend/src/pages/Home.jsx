@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Partners from "../components/Partners";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -60,7 +61,7 @@ export default function Home() {
           </Link>
         </div>
       </main>
-
+      <Partners />
       <Footer />
     </div>
   );

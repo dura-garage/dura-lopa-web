@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://dura-lopa-web-backend.onrender.com",
-  // baseURL:"http://localhost:5000"
+  // baseURL: "https://dura-lopa-web-backend.onrender.com",
+  baseURL: "http://localhost:5000",
 });
 
 export const fetchDictionary = async () => {
@@ -21,6 +21,16 @@ export const fetchSentences = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching sentences:", error);
+    throw error;
+  }
+};
+
+export const getSourcesBooks = async () => {
+  try {
+    const response = await API.get("api/sources");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching source books:", error);
     throw error;
   }
 };

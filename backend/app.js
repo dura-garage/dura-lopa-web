@@ -24,9 +24,11 @@ app.use(morgan("combined", { stream: logStream }));
 // Modular Routes
 const dictionaryRoutes = require("./routes/dictionary");
 const sentencesRoutes = require("./routes/sentences");
+const sourcesRoutes = require("./routes/sources");
 
 app.use("/api/dictionary", dictionaryRoutes);
 app.use("/api/sentences", sentencesRoutes);
+app.use("/api/sources", sourcesRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend is running.");

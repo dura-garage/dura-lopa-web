@@ -5,6 +5,7 @@ import WordDetailsPage from "./pages/WordDetailsPage";
 import SentencesPage from "./pages/Sentences";
 import Timeline from "./pages/Timeline";
 import TimelineHome from "./pages/TimelineHome";
+import Sources from "./pages/Sources";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/sentences" element={<SentencesPage />} />
       <Route path="/timelines" element={<TimelineHome />} />
       <Route path="/timeline" element={<Timeline />} />
+      <Route path="/sources" element={<Sources />} />
     </Routes>
   );
 }
