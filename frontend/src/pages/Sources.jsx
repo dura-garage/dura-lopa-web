@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import LoadingAnimation from "../components/LoadingAnimation";
-import { getSourcesBooks } from "../services/api";
 import { useTranslation } from "react-i18next";
 
 export default function Sources() {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      setLoading(true);
-      const bookData = await getSourcesBooks();
-      setBooks(bookData);
-      setLoading(false);
-    };
-
-    fetchBooks();
-  }, []);
+  const books = [
+    {
+      id: 1,
+      title: "दुरा भाषाको व्याकरण",
+      description:
+        "भाषा आयोगको आर्थिक सहयोगमा दुरा भाषाको व्याकरण निर्माण गरेर ३,००० प्रति प्रकाशित, एक घर एक पुस्तकको अभियान संचालन।",
+      url: "grammer.png",
+      fileName: "Dura Language Grammar.pdf",
+    },
+    {
+      id: 2,
+      title: "दुरा भाषाको शब्दकोश",
+      description:
+        "भाषा आयोगको आर्थिक सहयोगमा २,००० प्रति शब्दकोश प्रकाशित, एक घर एक पुस्तकको अभियान संचालन।",
+      url: "dictionary.png",
+      fileName: "Dura Language Dictionary.pdf",
+    },
+    {
+      id: 3,
+      title: "दुरा लोपा आधारभुत पाठ्यसामग्री १",
+      description:
+        "भाषा आयोगको सहयोगमा दुरा भाषाको पाठ्य सामग्री 'दुरा लोपा' प्रकाशित।",
+      url: "part1.png",
+      fileName: "Dura Lopa Part 1.pdf",
+    },
+    {
+      id: 4,
+      title: "दुरा लोपा आधारभुत पाठ्यसामग्री २",
+      description:
+        '२०८० सालमा भाषा आयोगको सहयोगमा "दुरा मातृभाषा कक्षा सञ्चालनका लागि पाठ्यसामग्री" र "दुरा लोपा (दुरा भाषा कक्षा) आधारभुत पाठ्यसामग्री २" नामक पुस्तक प्रकाशन गरिएको ।',
+      url: "part2.png",
+      fileName: "Dura Lopa Part 2.pdf",
+    },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -28,9 +48,7 @@ export default function Sources() {
         <h1 className="text-3xl font-semibold text-center mb-8">
           {t("sources")}
         </h1>
-        {loading ? (
-          LoadingAnimation()
-        ) : books.length === 0 ? (
+        {books.length === 0 ? (
           <div className="text-center text-lg">No books available.</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
