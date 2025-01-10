@@ -40,13 +40,20 @@ export default function Sources() {
                 className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <img
-                  src={book.url}
+                  src={`/images/books/${book.url}`}
                   alt={book.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-48 object-contain bg-gray-100 p-2"
                 />
                 <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">{book.name}</h2>
-                  <p className="text-gray-600">{book.description}</p>
+                  <h2 className="text-xl font-semibold mb-2">{book.title}</h2>
+                  <p className="text-gray-600 mb-4">{book.description}</p>
+                  <a
+                    href={`/pdfs/books/${book.fileName}`}
+                    download={book.title}
+                    className="px-4 py-2 bg-c1 text-white rounded hover:bg-blue-700"
+                  >
+                    Download
+                  </a>
                 </div>
               </div>
             ))}

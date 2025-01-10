@@ -3,19 +3,19 @@ import React from "react";
 
 const partners = [
   {
-    name: "Partner 1",
-    logo: "https://via.placeholder.com/100", // Replace with actual logo URL
-    website: "https://partner1.com", // Replace with actual website URL
+    name: "दुरा सेवा समाज",
+    logo: "/images/partners/dura_sewa_samaj.png",
+    website: "https://dura-student-society.onrender.com/",
   },
   {
-    name: "Partner 2",
-    logo: "https://via.placeholder.com/100", // Replace with actual logo URL
-    website: "https://partner2.com", // Replace with actual website URL
+    name: "दुरा विद्यार्थी समाज",
+    logo: "/images/partners/dura_students_society.jpg",
+    website: "https://dura-student-society.onrender.com/",
   },
   {
-    name: "Partner 3",
-    logo: "https://via.placeholder.com/100", // Replace with actual logo URL
-    website: "https://partner3.com", // Replace with actual website URL
+    name: "भाषा आयोग",
+    logo: "/images/partners/Emblem_of_Nepal_bhasa_aayog.png",
+    website: "https://languagecommission.gov.np/",
   },
 ];
 
@@ -24,7 +24,7 @@ export default function Partners() {
     <section className="bg-gray-100 py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl font-semibold text-center mb-6">
-          Our Partners
+          Supported By
         </h2>
         <div className="flex flex-wrap justify-center gap-6 items-center">
           {partners.map((partner, index) => (
