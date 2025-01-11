@@ -34,6 +34,9 @@ export default function Navbar() {
           <Link to="/sources" className="text-lg hover:text-c3">
             {t("sources")}
           </Link>
+          <Link to="/puraney" className="text-lg hover:text-c3">
+            पुराने
+          </Link>
           <button
             onClick={toggleLanguage}
             className="text-lg hover:text-c3 px-2 py-1 border border-c3 rounded"
@@ -79,6 +82,13 @@ export default function Navbar() {
             onClick={toggleMenu}
           >
             {t("sources")}
+          </Link>
+          <Link
+            to="/puraney"
+            className="block text-lg hover:text-c3 px-4"
+            onClick={toggleMenu}
+          >
+            पुराने
           </Link>
           <button
             onClick={() => {

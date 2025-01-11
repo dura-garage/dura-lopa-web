@@ -6,6 +6,7 @@ import SentencesPage from "./pages/Sentences";
 import Timeline from "./pages/Timeline";
 import TimelineHome from "./pages/TimelineHome";
 import Sources from "./pages/Sources";
+import SvgEditorPage from "./pages/Puraney";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Route path="/timelines" element={<TimelineHome />} />
       <Route path="/timeline" element={<Timeline />} />
       <Route path="/sources" element={<Sources />} />
+      <Route path="/puraney" element={<SvgEditorPage />} />
     </Routes>
   );
 }
