@@ -1,2 +1,2 @@
 # dura-lopa-web
-Bringing duralopa (दुरा लोपा) applicaiton into web.
+Bringing duralopa (दुरा लोपा) application into web.
